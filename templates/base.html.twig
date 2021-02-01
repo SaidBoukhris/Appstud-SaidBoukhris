@@ -2,12 +2,57 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <title>JVJA | {% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-
-        {% block javascripts %}{% endblock %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/1.png')}}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/default.css')}}">
+        <link id="theme-style" rel="stylesheet" type="text/css" href="{{ asset('')}}">
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {{ include('layout/partials/_socialBar.html.twig')}}
+        {{ include('layout/partials/_nav.html.twig')}}
+        <section class="sectionContainer">
+            <div class="mainContainer">
+                <h1 style="text-align: center;">{{ controller_name }}</h1>
+                {% block body %}{% endblock %}
+                <div class="footer">
+                    <div class="social-links">
+                        {# <video style="width:100%" controls>video<source src="vdo/1.mp4" type="video/mp4" ></video> #}
+                        <div class="social-img">
+                            <img style="width:30%;" src="{{asset('assets/images/1.png')}}" />
+                        </div>
+                        <h3>Me suivre Twitter & Youtube</h3>
+
+                        <a target="_blank" href="assets/SaidBoukhrisCV.pdf">Telecharger mon cv</a>
+                        <a target="_blank" href="https://www.youtube.com/channel/UC6MIZqjxkwKhwEoCytpay3w">YouTube: @Said Boukhris</a>
+                        <a target="_blank" href="https://twitter.com">Twitter: @Said Boukhris</a>
+                    </div>
+                    <div class="about-me">
+                        <h4>More about me</h4>
+                        <div id="skills">
+                            <ul>
+                                <li>Symfony</li>
+                                <li>WebPack</li>
+                                <li>JavaScript</li>
+                                <li>React</li>
+                                <li>MySQL</li>
+                            </ul>
+                            <ul>
+                                <li>Google Maps API</li>
+                                <li>JS Charts</li>
+                                <li>AWS (RDS/S3)</li>
+                                <li>Herbergement</li>
+                                <li>HTML/CSS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% block javascripts %}{% endblock %}
+        <script src="{{ asset('assets/js/scrollPos.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/script.js')}}"></script>
     </body>
 </html>

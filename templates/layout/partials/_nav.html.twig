@@ -1,0 +1,28 @@
+<div id="navbar" class="nav-wrapper">
+    <div id="top" class="top">
+        <div class="greeting-wrapper">
+            <p>Bonjour SASASASASA</p>
+        </div>
+        <span id="settings-note">Une question ? Contactez-nous : <a href="#">no-reply@tranzak.io</a></span>
+        <div id="navigation">
+            <img style="width:80px;margin:0 .3rem" src="{{asset('assets/images/1.png')}}"/>
+            <div id="navigation">
+                {% if not app.user %}
+                    <a href="{{path("main")}}">À propos</a>
+                    <a target="_blank" href="{{asset('assets/SaidBoukhrisCV.pdf')}}">Cv</a>
+                {% else %}
+                {% endif %}
+            </div>
+            <div id="thm">
+                <div id="theme-options-wrapper">
+                        <div data-mode="light" id="light-mode" class="theme-dot"></div>
+                        <div data-mode="blue" id="blue-mode" class="theme-dot"></div>
+                        <div data-mode="green" id="green-mode" class="theme-dot"></div>
+                        <div data-mode="purple" id="purple-mode" class="theme-dot"></div>
+                </div>
+                <span id="settings-note">*Changer de théme</span>
+            </div>
+        </div>
+
+    </div>
+</div>
