@@ -14,7 +14,7 @@ final class Version20210204164306 extends AbstractMigration
 {
     public function getDescription() : string
     {
-        return '#3 Add Reset Password';
+        return '#3 Auth : add entity Reset-Password';
     }
 
     public function up(Schema $schema) : void

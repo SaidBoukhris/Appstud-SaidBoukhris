@@ -14,7 +14,7 @@ final class Version20210202083424 extends AbstractMigration
 {
     public function getDescription() : string
     {
-        return '#2 Auth : add is_verified field in User';
+        return '#2 Auth : add field is_verified in User';
     }
 
     public function up(Schema $schema) : void
