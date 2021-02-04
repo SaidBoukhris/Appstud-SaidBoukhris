@@ -18,11 +18,10 @@
     
     </head>
     <body>
-        {{ include('layout/partials/_flash_messages.html.twig')}}
         {{ include('layout/partials/_header.html.twig')}}
         <div class="container">
-            </br>
             <h1 style="text-align: center;">{{ controller_name }}</h1>
+            {{ include('layout/partials/_flash_messages.html.twig')}}
             {% block body %}{% endblock %}
         </div>
             {{ include('layout/partials/_footer.html.twig')}}
