@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %} 
+{% block title %}{{ controller_name }}{% endblock %} 
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+    <div class="card mt-4">
+      <img class="rounded mx-auto d-block" style="width: 20rem;" src="{{asset('assets/images/biere.jpg')}}" alt="">
+      <div class="card-body">
+        <div class="text-center">
+          <h4 class="card-title">
+            <a href="{{path("app_exemple")}}">Guinness® Draught</a>
+          </h4>
+          <h5>3.79€</h5>
+          <p class="card-text">
+
+            Arôme : Parfum doux, bouquet de café et de malt
+          </p>
+          <p class="card-text">
+            Saveur : Équilibre parfait entre amertume et douceur, avec des notes maltées et torréfiées
+          </p>
+          <p class="card-text">
+            Palais : Douce, onctueuse et équilibrée
+          </p>
+          <p class="card-text">
+            TAV : 4,2 %
+          </p>
+          <p class="card-text">
+            Aspect : Robe sombre typique, surmontée d’une tête crémeuse et riche
+          </p>
+          <p class="card-text">
+            Houblons : Extrait de houblon isomérisé
+          </p>
+        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+        8/10
+        </div>
+      </div>
+    </div>
+    <!-- /.card -->
+    <div class="card card-outline-secondary my-4">
+      <div class="card-header">
+        Product Reviews
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <a href="#" class="btn btn-success">Leave a Review</a>
+      </div>
+    </div>
+    <!-- /.card -->
+
+  </div>
+  <!-- /.col-lg-9 -->
+
+<!-- /Page Content -->
+{% endblock %}

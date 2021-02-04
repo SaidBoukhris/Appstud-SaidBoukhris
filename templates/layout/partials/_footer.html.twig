@@ -1,0 +1,20 @@
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <img src="{{asset('assets/images/1.png')}}"/>
+    {% if app.user %}
+    <p class="m-0 text-center text-white">{{app.user.email}}</p>    
+    {% endif %}
+    {% if not app.user %}
+      <a href="{{path("app_exemple")}}">Exemple</a>
+      <a href="{{asset('assets/SaidBoukhrisCV.pdf')}}">Cv</a>
+      <a href="{{path("app_register")}}">Inscription</a>
+      <a href="{{path("app_login")}}">Login</a>
+      <a href="{{path("app_hompage")}}">Homepage</a>
+    {% else %}
+      <a href="{{path("app_logout")}}">Logout</a>
+    {% endif %}
+      <p class="m-0 text-center text-white">Copyright &copy; JVJA 2020</p>
+  </div>
+  <!-- /.container -->
+</footer>

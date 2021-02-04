@@ -19,7 +19,7 @@ for (var i = 0; themeDots.length > i; i++) {
 
 function setTheme(mode) {
     if (mode == 'light') {
-        document.getElementById('theme-style').href = '/assets/css/default.css'
+        document.getElementById('theme-style').href = '/assets/css/index.css'
     }
 
     if (mode == 'blue') {
