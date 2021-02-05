@@ -21,8 +21,11 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           {% if not app.user %}
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="{{path("app_exemple")}}">Exemple</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{path("users_adverts_add")}}">ajouter une annonce</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{path("app_hompage")}}">Homepage</a>
