@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %} 
+{% block title %}{{ controller_name }}{% endblock %} 
+{% block body %}
+<!-- Page Content -->
+  <div class="container">
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="text-center">
+          <h4 class="card-title">{{advert.title}}</h4>
+          <h5>{{advert.categories.name}}</h5>
+          <p class="card-text">{{advert.slug}}</p>
+          <p class="card-text">{{advert.content |raw}}</p>
+          <p class="card-text">paru le {{ advert.createdAt ? advert.createdAt|date('d/m/Y') : '' }}</p>
+          <p class="card-text">modifier le{{ advert.modifiedAt ? advert.modifiedAt|date('d/m/Y') : '' }}</p>
+          <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>8/10
+
+        </div>
+      </div>
+    </div>
+    <!-- /.card -->
+    
+    <div class="card card-outline-secondary my-4">
+      <div class="card-header">
+        Product Reviews
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <a href="{{ path('users_adverts_all') }}" class="btn btn-success">retour</a>
+      </div>
+    </div>
+    <!-- /.card -->
+
+  </div>
+
+<!-- /Page Content -->
+{% endblock %}

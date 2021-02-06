@@ -96,7 +96,7 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('app_hompage'));
+        return new RedirectResponse($this->urlGenerator->generate('users_adverts_all'));
     }
 
     protected function getLoginUrl()

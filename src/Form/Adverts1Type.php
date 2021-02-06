@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class Adverts1Type extends AbstractType
 {
@@ -18,7 +18,7 @@ class Adverts1Type extends AbstractType
     {
         $builder
             ->add('title',TextType::class)
-            ->add('content',TextareaType::class)
+            ->add('content',CKEditorType::class)
             ->add('categories',EntityType::class,[
                 'class' => Categories::class
             ])

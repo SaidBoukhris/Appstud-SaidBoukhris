@@ -14,10 +14,11 @@
         <!-- Custom styles -->
         <link href="{{ asset('assets/css/index.css')}}" rel="stylesheet">
         <link id="theme-style" rel="stylesheet" type="text/css" href="{{ asset('')}}">
-        <title>JVJA | {% block title %}{% endblock %}</title>
+        <title>ibuy•isell | {% block title %}{% endblock %}</title>
     
     </head>
     <body>
+      {{ include('layout/partials/_social.html.twig')}}
         {{ include('layout/partials/_header.html.twig')}}
         <div class="container">
             <h1 style="text-align: center;">{{ controller_name }}</h1>
