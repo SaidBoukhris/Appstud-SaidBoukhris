@@ -14,19 +14,20 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('app_landing');
-        // }
-
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        if ($this->getUser()) {
+            return $this->redirectToRoute('users_user_account');
+            $this->addFlash('info','Déjà connecté');
+        }
+        
+        $error = $authenticationUtils->getLastAuthenticationError();
+        if ($error) {
+            $this->addFlash('error','Mauvais identifiants de connexion');
+        }
         return $this->render('security/login.html.twig', [
             'controller_name' => 'Login',
-            'last_username' => $lastUsername, 
-            'error' => $error
+            'last_username' => $lastUsername
             ]);
     }
 

@@ -1,0 +1,56 @@
+{% extends 'users/users.html.twig' %} 
+{% block title %}{{app.user.name}} {{app.user.firstname}}{{ controller_name }}{% endblock %} 
+{% block body %}
+<!-- Page Content -->
+  <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+        <th scope="col">UUID</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th colspan="2" style="text-align:center;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th scope="row">{{app.user.id}}</th>
+        <td>{{app.user.firstname}}</td>
+        <td>{{app.user.name}}</td>
+        <td>{{app.user.email}}</td>
+        <td><a href="{{ path('users_user_account_edit')}}">Modifier le profil</a></td>
+        <td><a href="{{ path('users_user_password_edit')}}">Modifier mot de passe</a></td>
+    </tr>
+  </tbody>
+</table>
+<h5>Annonces de {{app.user.name}} {{app.user.firstname}} ({{app.user.adverts |length}})</h5>
+<table class="table table-bordered table-secondary">
+    <thead>
+        <tr>
+            <th scope="col">N°</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Publier le</th>
+            <th colspan="2" style="text-align:center;">Partager</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for advert in app.user.adverts %}
+        <tr>
+            <td>{{advert.id}}</td>
+            <td><a href="{{ path('users_adverts_show', {'slug': advert.slug}) }}">{{advert.title}}</a></td>
+            <td>{{advert.content |u.truncate(40)}}...</td>
+            <td>{{advert.createdAt|date("d/m/Y")}}</td>
+            <td>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-youtube"></i>
+                <i class="fa fa-google"></i>
+                <i class="fa fa-linkedin"></i>
+            </td>
+        </tr>
+  {% endfor %}
+    </tbody>
+</table>
+<!-- /Page Content -->
+{% endblock %}

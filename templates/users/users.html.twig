@@ -19,13 +19,13 @@
     </head>
     <body>
         {{ include('layout/partials/_social.html.twig')}}
-        {{ include('layout/partials/_header_main.html.twig')}}
+        {{ include('layout/partials/_header_users.html.twig')}}
         <main class="main">
-        <div class="container">
-            <h1 style="text-align: center;">{{ controller_name }}</h1>
-            {{ include('layout/partials/_flash_messages.html.twig')}}
-            {% block body %}{% endblock %}
-        </div>
+            <div class="container">
+                <h1 style="text-align: center;">{{ controller_name }}</h1>
+                {{ include('layout/partials/_flash_messages.html.twig')}}
+                {% block body %}{% endblock %}
+            </div>
         </main>
             {{ include('layout/partials/_footer.html.twig')}}
         {% block javascripts %}{% endblock %}
@@ -36,6 +36,6 @@
         <!-- Bootstrap JavaScript -->
         <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-
+        
     </body>
 </html>

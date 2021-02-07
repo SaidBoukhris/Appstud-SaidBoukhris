@@ -1,0 +1,7 @@
+{% extends 'users/users.html.twig' %} 
+{% block title %}{{app.user.name}} {{app.user.firstname}}{{ controller_name }}{% endblock %} 
+{% block body %}
+<!-- Page Content -->
+  {{ form(form) }}
+<!-- /Page Content -->
+{% endblock %}

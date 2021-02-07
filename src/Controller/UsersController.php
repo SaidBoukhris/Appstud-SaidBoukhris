@@ -3,20 +3,77 @@
 namespace App\Controller;
 
 use App\Entity\Adverts;
-use App\Entity\Users;
 use App\Form\Adverts1Type;
+use App\Form\EditAccountType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 /**
  * @Route("/users", name="users_")
  */
 class UsersController extends AbstractController
 {
     /**
-     * @Route("/", name="adverts_all")
+     * @Route("/", name="user_account")
+     */
+    public function userAccount(): Response
+    {   
+        return $this->render('users/account/user.html.twig', [
+            'controller_name' => ' Mon compte'
+        ]);
+    }
+
+    /**
+     * @Route("/account/edit", name="user_account_edit")
+     */
+    public function editUserAccount(Request $request, EntityManagerInterface $em): Response
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(EditAccountType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($user);
+            $em->flush();
+            $this->addFlash('success','Votre profil à bien été mis à jour ');
+            return $this->redirectToRoute('users_user_account');
+        }
+
+        return $this->render('users/account/user_account_edit.html.twig', [
+            'form' => $form->createView(),
+            'controller_name' => 'Modifier mon profil'
+        ]);
+    }
+
+    /**
+     * @Route("/password/edit", name="user_password_edit")
+     */
+    public function editUserPassword(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncode): Response
+    {
+        if ($request->isMethod('POST')) {
+            $user = $this->getUser();  
+            if ($request->request->get('password') == $request->request->get('confirmPassword')) { 
+                $user->setPassword($passwordEncode->encodePassword($user,$request->get('password')));  
+                $em->persist($user);
+                $em->flush();
+                $this->addFlash('success','Votre mot de passe a été mis à jour avec succés');
+                return $this->redirectToRoute('users_user_account');
+            }else{
+                $this->addFlash('error','Les mots de passe doivent être identiques');
+            }
+        }
+
+        return $this->render('users/account/user_password_edit.html.twig', [
+            'controller_name' => 'Modifier mon mot de passe'
+        ]);
+    }
+
+    /**
+     * @Route("/adverts", name="adverts_all")
      */
     public function allAdverts(): Response
     {
@@ -58,7 +115,7 @@ class UsersController extends AbstractController
     {
         $advert = $this->getDoctrine()->getRepository(Adverts::class)->findOneBy(['slug' => $slug]);
         return $this->render('users/adverts/show.html.twig', [
-            'controller_name' => $advert->getTitle(),
+            'controller_name' => ucwords(str_replace('-', ' ', $slug)),
             'advert' => $advert
         ]);
     }

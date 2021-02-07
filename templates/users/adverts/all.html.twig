@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %} 
+{% extends 'users/users.html.twig' %} 
 {% block title %}{{ controller_name }} {% endblock %} 
 {% block body %}
 <!-- Page Content -->
- {{ app.user.email }} : {{ advert |length }} annonces
   <div class="container">
+  <p class="card-text">{{ app.user.email }} : {{ advert |length }} annonces</p>
     <div class="row">
       {% for adverts in advert %}
       <div class="col-lg-4 col-md-6 mb-4">
@@ -20,6 +20,13 @@
             <p class="card-text">Paru le {{ adverts.createdAt ? adverts.createdAt|date('d/m/Y') : '' }}</p>
             <p class="card-text">Modifier le{{ adverts.modifiedAt ? adverts.modifiedAt|date('d/m/Y') : '' }}</p>
             <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>8/10
+            <p>
+            <i class="fa fa-twitter"></i>
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-youtube"></i>
+                <i class="fa fa-google"></i>
+                <i class="fa fa-linkedin"></i>
+            </p>
           </div>
         </div>
       </div>

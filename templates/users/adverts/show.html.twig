@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} 
+{% extends 'users/users.html.twig' %} 
 {% block title %}{{ controller_name }}{% endblock %} 
 {% block body %}
 <!-- Page Content -->
@@ -15,6 +15,13 @@
           <p class="card-text">modifier le{{ advert.modifiedAt ? advert.modifiedAt|date('d/m/Y') : '' }}</p>
           <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>8/10
 
+            <p>
+            <i class="fa fa-twitter"></i>
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-youtube"></i>
+                <i class="fa fa-google"></i>
+                <i class="fa fa-linkedin"></i>
+            </p>
         </div>
       </div>
     </div>
@@ -22,7 +29,7 @@
     
     <div class="card card-outline-secondary my-4">
       <div class="card-header">
-        Product Reviews
+        Commentaires
       </div>
       <div class="card-body">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
