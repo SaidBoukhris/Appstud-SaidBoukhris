@@ -85,11 +85,14 @@ class UsersController extends AbstractController
     }
 
     /**
-     * @Route("/adverts/add", name="adverts_add")
+     * @Route("/adverts/add", name="adverts_add", methods={"GET","POST"})
+     * @Route("/adverts/{id<[0-9]+>}/edit", name="adverts_edit", methods={"GET","POST"})
      */
-    public function addAdverts(Request $request, EntityManagerInterface $em): Response
+    public function advertsForm(Adverts $advert, Request $request, EntityManagerInterface $em): Response
     {
+        if(!$advert){
         $advert = new Adverts();
+        }
         $form = $this->createForm(Adverts1Type::class, $advert);
         $form->handleRequest($request);
 
@@ -102,7 +105,7 @@ class UsersController extends AbstractController
             return $this->redirectToRoute('users_adverts_show', ['slug' => $advert->getSlug()]);
         }
 
-        return $this->render('users/adverts/add.html.twig', [
+        return $this->render('users/adverts/form.html.twig', [
             'form' => $form->createView(),
             'controller_name' => 'Ajouter une annonce'
         ]);

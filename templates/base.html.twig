@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-        <link rel="icon" type="image/png" href="{{ asset('assets/images/1.png')}}" />
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/1.svg')}}" />
         <meta name="description" content="JeVendsJAchétes-Site de petites annonces">
         <meta name="author" content="Saïd Boukhris">
         {% block stylesheets %}{% endblock %}
@@ -19,13 +19,13 @@
     </head>
     <body>
         {{ include('layout/partials/_social.html.twig')}}
-        {{ include('layout/partials/_header_main.html.twig')}}
+        {{ include('layout/partials/_header.html.twig')}}
         <main class="main">
-        <div class="container">
-            <h1 style="text-align: center;">{{ controller_name }}</h1>
-            {{ include('layout/partials/_flash_messages.html.twig')}}
-            {% block body %}{% endblock %}
-        </div>
+            <div class="container">
+                <h1 style="text-align: center;">{{ controller_name }}</h1>
+                {{ include('layout/partials/_flash_messages.html.twig')}}
+                {% block body %}{% endblock %}
+            </div>
         </main>
             {{ include('layout/partials/_footer.html.twig')}}
         {% block javascripts %}{% endblock %}

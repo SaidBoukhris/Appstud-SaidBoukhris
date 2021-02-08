@@ -1,34 +1,40 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Categories;
 use App\Form\CategoriesType;
+use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 /**
- * @Route("/admin", name="admin_")
+ * @Route("/admin/categories", name="admin_categories_")
  */
-class AdminController extends AbstractController
+class CategoriesController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(CategoriesRepository $repos): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'ADMIN',
+        return $this->render('admin/categories/index.html.twig', [
+            'controller_name' => 'Gérer les categories',
+            'categories' => $repos->findAll()
         ]);
     }
 
     /**
-     * @Route("/categories/add", name="categories_add")
+     * @Route("/add", name="add")
+     * @Route("/{id<[0-9]+>}/edit", name="edit", methods={"GET","POST"})
      */
-    public function addCategories(Request $request): Response
+    public function addCategories(Request $request, Categories $categorie=null): Response
     {
-        $categorie = new Categories();
+        if(!$categorie){
+            $categorie = new Categories();
+        }
 
         $form = $this->createForm(CategoriesType::class,$categorie);
 
@@ -38,7 +44,8 @@ class AdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($categorie);
             $entityManager->flush();
-            return $this->redirectToRoute('admin_home');
+            $this->addFlash('success', 'La catégorie a bien été ajouté');
+            return $this->redirectToRoute('admin_categories_home');
         }
 
         return $this->render('admin/categories/add.html.twig', [
@@ -46,4 +53,6 @@ class AdminController extends AbstractController
             'controller_name' => 'Ajouter une catégorie'
         ]);
     }
+
+
 }

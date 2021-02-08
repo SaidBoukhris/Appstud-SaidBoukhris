@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+
+<!-- Page Content --><a href="{{path('admin_categories_add')}}">Ajouter une catégorie</a>
+  <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+        <th scope="col">UUID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Parent</th>
+        <th colspan="2" style="text-align:center;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for categorie in categories %}
+        <tr>
+            <th scope="row">{{categorie.id}}</th>
+            <td>{{categorie.name}}</td>
+            <td>{{categorie.parent}}</td>
+            <td><a href="{{path('admin_categories_edit',{'id': categorie.id})}}">Modifier</a></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- /Page Content -->
+{% endblock %}

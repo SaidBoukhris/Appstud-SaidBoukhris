@@ -8,18 +8,18 @@
         <meta name="author" content="Saïd Boukhris">
         {% block stylesheets %}{% endblock %}
         <!-- Font-Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <!-- Bootstrap CSS-->
-         <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+         <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
         <!-- Custom styles -->
-        <link href="{{ asset('assets/css/index.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/css/index.css')}}" rel="stylesheet" type="text/css">
         <link id="theme-style" rel="stylesheet" type="text/css" href="{{ asset('')}}">
         <title>ibuy•isell | {% block title %}{% endblock %}</title>
     
     </head>
     <body>
         {{ include('layout/partials/_social.html.twig')}}
-        {{ include('layout/partials/_header_users.html.twig')}}
+        {{ include('layout/partials/_header.html.twig')}}
         <main class="main">
             <div class="container">
                 <h1 style="text-align: center;">{{ controller_name }}</h1>

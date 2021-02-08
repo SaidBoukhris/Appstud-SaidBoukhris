@@ -15,6 +15,7 @@ class EditAccountType extends AbstractType
     {
         $builder
             ->add('name',TextType::class)
+            ->add('image')
             ->add('firstname',TextType::class)
             ->add('Valider',SubmitType::class)
         ;

@@ -6,6 +6,7 @@
   <thead>
     <tr>
         <th scope="col">UUID</th>
+        <th scope="col">Image</th>
         <th scope="col">Prénom</th>
         <th scope="col">Nom</th>
         <th scope="col">Email</th>
@@ -15,6 +16,7 @@
   <tbody>
     <tr>
         <th scope="row">{{app.user.id}}</th>
+        <td><img style="max-width: 200px" src="{{app.user.image}}" class="card-img-top" alt="..."></td>
         <td>{{app.user.firstname}}</td>
         <td>{{app.user.name}}</td>
         <td>{{app.user.email}}</td>
@@ -28,6 +30,7 @@
     <thead>
         <tr>
             <th scope="col">N°</th>
+            <th scope="col">Image</th>
             <th scope="col">Titre</th>
             <th scope="col">Description</th>
             <th scope="col">Publier le</th>
@@ -37,7 +40,9 @@
     <tbody>
       {% for advert in app.user.adverts %}
         <tr>
+          
             <td>{{advert.id}}</td>
+            <td><img style="max-width: 100%" src="{{advert.image}}" class="card-img-top" alt="..."></td>
             <td><a href="{{ path('users_adverts_show', {'slug': advert.slug}) }}">{{advert.title}}</a></td>
             <td>{{advert.content |u.truncate(40)}}...</td>
             <td>{{advert.createdAt|date("d/m/Y")}}</td>
