@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/1.svg')}}" />
+        <meta name="description" content="JeVendsJAchétes-Site de petites annonces">
+        <meta name="author" content="Saïd Boukhris">
+        {% block stylesheets %}{% endblock %}
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap CSS-->
+         <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+        <!-- Custom styles -->
+        <link href="{{ asset('assets/css/index.css')}}" rel="stylesheet">
+        <link id="theme-style" rel="stylesheet" type="text/css" href="{{ asset('')}}">
+        <title>ibis ADMIN | {% block title %}{% endblock %}</title>
+    
+    </head>
+Saïd
+    <body>
+        {{ include('layout/partials/_social.html.twig')}}
+        {{ include('layout/partials/_header_admin.html.twig')}}
+        <main class="main">
+            <div class="container">
+                <h1 style="text-align: center;">{{ controller_name }}</h1>
+                {{ include('layout/partials/_flash_messages.html.twig')}}
+                {% block body %}{% endblock %}
+            </div>
+        </main>
+            {{ include('layout/partials/_footer.html.twig')}}
+        {% block javascripts %}{% endblock %}
+    
+        <!-- Custom JavaScript -->
+        <script src="{{ asset('assets/js/index.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/script.js')}}"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+
+    </body>
+</html>

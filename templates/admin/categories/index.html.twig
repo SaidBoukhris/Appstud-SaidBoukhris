@@ -1,10 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
 {% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
 
-<!-- Page Content --><a href="{{path('admin_categories_add')}}">Ajouter une catégorie</a>
+<!-- Page Content -->
+<a href="{{path('admin_categories_add')}}">Ajouter une catégorie</a>
   <table class="table table-bordered table-dark">
   <thead>
     <tr>
@@ -18,7 +19,7 @@
     {% for categorie in categories %}
         <tr>
             <th scope="row">{{categorie.id}}</th>
-            <td>{{categorie.name}}</td>
+            <td><i class="fa fa-{{categorie.icon}}" aria-hidden="true"></i> {{categorie.name}}</td>
             <td>{{categorie.parent}}</td>
             <td><a href="{{path('admin_categories_edit',{'id': categorie.id})}}">Modifier</a></td>
         </tr>

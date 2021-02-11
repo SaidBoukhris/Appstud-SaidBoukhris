@@ -2,10 +2,11 @@
     --mainColor: #46344E;
     --secondaryColor: #382a3f;
     --borderColor: #1d1520;
-    --mainText: #1f1f1f;
+    --title: #ffffff;
+    --mainText: #000000;
     --secondaryText: #525252;
-    --themeDotBorder: rgb(44, 44, 44);
-    --previewBg: rgb(29, 21, 32, 0.8);
+    --themeDotBorder: #2c2c2c;
+    --previewBg: #1d1520cc;
     --previewShadow: #2b202f;
     --buttonColor: #8534a3;
     --cardDetails: #1d1520bd;

@@ -1,0 +1,92 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+
+<!-- Page Content -->
+
+  <!-- Section Adverts -->
+    <a href="{{path('admin_adverts_add')}}">Ajouter une annonce</a>
+    <table class="table table-bordered table-light">
+
+      <thead>
+        <tr>
+          <th scope="col">UUID</th>
+          <th scope="col">Titre</th>
+          <th scope="col">Date de publication</th>
+          <th scope="col">Proprietaire</th>
+          <th scope="col">Active</th>
+          <th colspan="2" style="text-align:center;">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for advert in adverts %}
+          <tr>
+            <td>{{advert.id}}</td>
+            <td><a href="{{ path('users_adverts_show', {'slug': advert.slug}) }}">{{advert.title}}</a></td>
+            <td>{{advert.createdAt|date("d/m/Y")}}</td>
+            <td>{{advert.user}}</td>
+            <td>
+            <div class="form-check form-switch">
+
+              <input type="checkbox" {{(advert.active) ? 'checked' : ' '}} class="form-check-input" id="switch" data-id="{{advert.id}}">
+
+              <label class="form-check-label" for="switch"></label>
+            </div>
+            </td>
+            <td>
+              <a href='#' onclick='modalAdvertDelete()'>supprimer</a>
+              <div id="advert_delete">
+                <div>
+                  <p>Supprimer l'annonce : {{advert.title}}</p>
+                  <p>createur : {{advert.user}}</p>
+                  <p><a href='#' onclick='modalAdvertDelete()'>ANNULER</a></p>
+                  <p><a href='{{ path('admin_adverts_delete', {'id': advert.id}) }}' onclick='modalAdvertDelete()'>SUPPRIMER</a></p>
+                </div>
+            </td>
+            <td>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-youtube"></i>
+                <i class="fa fa-google"></i>
+                <i class="fa fa-linkedin"></i>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+  <!-- /Section Adverts -->
+
+  <!-- Section categories -->
+    <a href="{{path('admin_categories_add')}}">Ajouter une catégorie</a>
+    <table class="table table-bordered table-light">
+      <thead>
+        <tr>
+            <th scope="col">UUID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Parent</th>
+            <th colspan="2" style="text-align:center;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <th scope="row">{{categorie.id}}</th>
+                <td><i class="fa fa-{{categorie.icon}}" aria-hidden="true"></i> {{categorie.name}}</td>
+                <td>{{categorie.parent}}</td>
+                <td><a href="{{path('admin_categories_edit',{'id': categorie.id})}}">Modifier</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  <!-- /Section categories -->
+
+<!-- /Page Content -->
+{% endblock %}
+
+{% block javascripts %}
+  <script src="{{ asset('assets/js/checkbox.js')}}"></script>
+{% endblock %}

@@ -2,6 +2,8 @@
 {% block title %}{{ controller_name }}{% endblock %} 
 {% block body %}
 <!-- Page Content -->
+  <div class="container">
+
     <div class="card mt-4">
       <img style="max-width: 100%" src="{{advert.image}}" class="card-img-top" alt="...">
       <div class="card-body">
@@ -13,7 +15,9 @@
           <p class="card-text">paru le {{ advert.createdAt ? advert.createdAt|date('d/m/Y') : '' }}</p>
           <p class="card-text">modifier le{{ advert.modifiedAt ? advert.modifiedAt|date('d/m/Y') : '' }}</p>
           <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>8/10
+          {% if app.user %}
             <a href="{{ path('users_adverts_edit', {'slug': advert.slug}) }}">Modifier</a>
+          {% endif %}
             <p>
             <i class="fa fa-twitter"></i>
                 <i class="fa fa-facebook"></i>
@@ -44,6 +48,8 @@
       </div>
     </div>
     <!-- /.card -->
+
+  </div>
 
 <!-- /Page Content -->
 {% endblock %}

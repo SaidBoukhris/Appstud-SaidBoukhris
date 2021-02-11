@@ -2,6 +2,7 @@
     --mainColor: #ffffff;
     --secondaryColor: #fff;
     --borderColor: #d1d1d1;
+    --title: black;
     --mainText: black;
     --secondaryText: #525252;
     --themeDotBorder: #24292e;
@@ -32,17 +33,17 @@ body * {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong {
-    color: var(--mainText);
+h2 {
+    color: var(--title);
     font-family: 'Russo One', sans-serif;
     font-weight: 500;
 }
 
+h3,
+h4,
+h5,
+h6,
+strong,
 p,
 li,
 span,

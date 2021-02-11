@@ -14,13 +14,13 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $lastUsername = $authenticationUtils->getLastUsername();
 
         if ($this->getUser()) {
-            return $this->redirectToRoute('users_user_account');
             $this->addFlash('info','Déjà connecté');
+            return $this->redirectToRoute('users_user_account');
         }
         
+        $lastUsername = $authenticationUtils->getLastUsername();
         $error = $authenticationUtils->getLastAuthenticationError();
         if ($error) {
             $this->addFlash('error','Mauvais identifiants de connexion');

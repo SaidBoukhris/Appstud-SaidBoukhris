@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Adverts;
 use App\Form\Adverts1Type;
 use App\Form\EditAccountType;
+use App\Repository\AdvertsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,23 +76,33 @@ class UsersController extends AbstractController
     /**
      * @Route("/adverts", name="adverts_all")
      */
-    public function allAdverts(): Response
+    public function allAdverts(AdvertsRepository $adverts): Response
     {
-        $advert = $this->getDoctrine()->getRepository(Adverts::class)->findAll();
         return $this->render('users/adverts/all.html.twig', [
             'controller_name' => 'Mes annonces',
-            'advert' => $advert
+            'adverts' => $adverts->findAll()
         ]);
     }
 
     /**
-     * @Route("/adverts/add", name="adverts_add", methods={"GET","POST"})
-     * @Route("/adverts/{id<[0-9]+>}/edit", name="adverts_edit", methods={"GET","POST"})
+     * @Route("/adverts/{slug}", name="adverts_show", methods={"GET"})
      */
-    public function advertsForm(Adverts $advert, Request $request, EntityManagerInterface $em): Response
+    public function showAdverts($slug,AdvertsRepository $repos): Response
+    {
+        return $this->render('users/adverts/show.html.twig', [
+            'controller_name' => str_replace("-", " ", $slug),
+            'advert' => $repos->findOneBy(['slug' => $slug])
+        ]);
+    }
+
+    /**
+     * @Route("/adverts/{slug}/edit", name="adverts_edit", methods={"GET","POST"})
+     * @Route("/adverts/add", name="adverts_add", methods={"GET","POST"})
+     */
+    public function advertsForm(Adverts $advert=null, Request $request, EntityManagerInterface $em): Response
     {
         if(!$advert){
-        $advert = new Adverts();
+            $advert = new Adverts();
         }
         $form = $this->createForm(Adverts1Type::class, $advert);
         $form->handleRequest($request);
@@ -108,18 +119,6 @@ class UsersController extends AbstractController
         return $this->render('users/adverts/form.html.twig', [
             'form' => $form->createView(),
             'controller_name' => 'Ajouter une annonce'
-        ]);
-    }
-
-    /**
-     * @Route("/adverts/{slug}", name="adverts_show", methods={"GET"})
-     */
-    public function showAdverts($slug): Response
-    {
-        $advert = $this->getDoctrine()->getRepository(Adverts::class)->findOneBy(['slug' => $slug]);
-        return $this->render('users/adverts/show.html.twig', [
-            'controller_name' => ucwords(str_replace('-', ' ', $slug)),
-            'advert' => $advert
         ]);
     }
 }

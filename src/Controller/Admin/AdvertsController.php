@@ -22,7 +22,7 @@ class AdvertsController extends AbstractController
     public function index(AdvertsRepository $repos): Response
     {
         return $this->render('admin/adverts/index.html.twig', [
-            'controller_name' => 'Gérer les adverts',
+            'controller_name' => 'Gérer les annonces',
             'adverts' => $repos->findAll()
         ]);
     }
@@ -50,7 +50,7 @@ class AdvertsController extends AbstractController
 
         return $this->render('admin/adverts/add.html.twig', [
             'form' => $form->createView(),
-            'controller_name' => 'Ajouter une catégorie'
+            'controller_name' => 'Ajouter une annonce'
         ]);
     }
 

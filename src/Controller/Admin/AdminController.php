@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Adverts;
+use App\Repository\AdvertsRepository;
+use App\Repository\CategoriesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,10 +18,12 @@ class AdminController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(AdvertsRepository $reposAdverts, CategoriesRepository $reposCategories): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'ADMIN',
+        return $this->render('admin/main/index.html.twig', [
+            'controller_name' => 'ESPACE ADMIN',
+            'adverts' => $reposAdverts->findAll(),
+            'categories' => $reposCategories->findAll()
         ]);
     }
 

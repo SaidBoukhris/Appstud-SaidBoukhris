@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %} 
+{% block title %}{{ controller_name }}{% endblock %} 
+{% block body %}
+<!-- Page Content -->
+
+<div class="card-columns">
+    {% for advert in adverts %}
+	<a href="{{ path('main_adverts_show', {'slug': advert.slug}) }}">
+  	<div class="card">
+		<div class="card-body">
+			<img style="width: 100%;" src="{{advert.image}}" class="card-img-top" alt="...">
+			<h5 class="card-title">{{advert.title}}</h5>
+	<a href="{{ path('main_categories_show', {'slug': advert.categories.slug}) }}">
+			<small class="text-muted">{{advert.categories.name}}</small>
+	</a>
+			<small class="text-muted">{{advert.user.name}} {{advert.user.firstname}} • le {{advert.createdAt|date("d/m/Y")}}</small>
+        <br><i class="fa fa-twitter"></i>
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-youtube"></i>
+        <i class="fa fa-google"></i>
+        <i class="fa fa-linkedin"></i>
+		</div> 
+	</div>
+	</a>
+    {% endfor %}
+</div>
+
+  <!-- /Page Content -->
+
+{% endblock %}

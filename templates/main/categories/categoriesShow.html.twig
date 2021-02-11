@@ -1,22 +1,25 @@
-{% extends 'base.html.twig' %} 
-{% block title %}{{ controller_name }}{% endblock %} 
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
 {% block body %}
+
 <!-- Page Content -->
 
+  <h2>{{categories.adverts| length}} annonce(s)</h2>
 <div class="card-columns">
-    {% for advert in adverts %}
-	<a href="{{ path('users_adverts_show', {'slug': advert.slug}) }}">
-  	<div class="card">
+    {% for advert in categories.adverts %}
+    <a href="{{ path('main_adverts_show', {'slug': advert.slug}) }}">
+    <div class="card">
 		<div class="card-body">
 			<img style="width: 100%;" src="{{advert.image}}" class="card-img-top" alt="...">
 			<h5 class="card-title">{{advert.title}}</h5>
 			<small class="text-muted">{{advert.user.name}} {{advert.user.firstname}} • le {{advert.createdAt|date("d/m/Y")}}</small>
-			<small class="text-muted">{{advert.user.name}} {{advert.user.firstname}} • le {{advert.createdAt|date("d/m/Y")}}</small>
 		</div> 
 	</div>
-	</a>
+  </a>
     {% endfor %}
-</div>
-  <!-- /.container -->
-
+	</div>
+    
+<!-- /Page Content -->
 {% endblock %}

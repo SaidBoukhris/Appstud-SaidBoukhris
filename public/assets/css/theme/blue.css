@@ -2,7 +2,8 @@
     --mainColor: #15202B;
     --secondaryColor: #192734;
     --borderColor: #164D56;
-    --mainText: #1f1f1f;
+    --title: rgb(255, 255, 255);
+    --mainText: #000000;
     --secondaryText: #525252;
     --themeDotBorder: #FFF;
     --previewBg: rgb(25, 39, 52, 0.8);
